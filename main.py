@@ -1,12 +1,7 @@
-# Cookie Clicker
-# Simple Cookie Clicker Clone
-# Python 3.x Compatible
-# Windows, MacOSX, and Linux Compatible
-# by @TokyoEdtech
-import turtle
+
 
 wn = turtle.Screen()
-wn.title("Cookie Clicker by @TokyoEdtech")
+
 wn.bgcolor("black")
 
 wn.register_shape("cookie.gif")
