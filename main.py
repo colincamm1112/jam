@@ -1,20 +1,38 @@
 
 import turtle
-
+import random
 
 wn = turtle.Screen()
 wn.bgcolor("black")
 
-ball = turtle.Turtle()
-ball.shape("circle")
-ball.color("green")
-ball.penup()
-ball.speed(0)
-ball.goto(0, 200)
-ball.dy = -1
-grav = 0.1
-clicks  = 0
-ball.dx = 4
+balls  = []
+
+for _ in range(10):
+  balls.append(turtle.Turtle())
+
+
+
+
+
+
+
+
+
+
+
+
+
+for ball in balls:
+  ball.shape("circle")
+  ball.color("green")
+  ball.penup()
+  ball.speed(0)
+  x = random.randint(-290, 290)
+  ball.goto(x, 200)
+  ball.dy = -1
+  grav = 0.1
+  clicks  = 0
+  ball.dx = 4
 
 
 
@@ -36,18 +54,19 @@ def point():
 
 while True:
   wn.update()
-  ball.dy -= grav
-  ball.sety(ball.ycor() + ball.dy)
+  for ball in balls:
+    ball.dy -= grav
+    ball.sety(ball.ycor() + ball.dy)
   
-  ball.setx(ball.xcor() + ball.dx)
+    ball.setx(ball.xcor() + ball.dx)
 
-  if ball.ycor() < -220:
-    ball.dy *= -1
-    point()
+    if ball.ycor() < -220:
+      ball.dy *= -1
+      point()
   
-  if ball.xcor() < -300:
-    ball.dx *= -1
-    point()
+    if ball.xcor() < -300:
+      ball.dx *= -1
+      point()
   
   if ball.xcor() > 300:
     ball.dx *= -1
