@@ -1,77 +1,78 @@
-
+# Cookie Clicker
+# Simple Cookie Clicker Clone
+# Python 3.x Compatible
+# Windows, MacOSX, and Linux Compatible
+# by @TokyoEdtech
 import turtle
-import random
+
+
 
 wn = turtle.Screen()
+
 wn.bgcolor("black")
-
-balls  = []
-
-for _ in range(10):
-  balls.append(turtle.Turtle())
+wn.register_shape("cookie.gif")
 
 
+button1 = turtle.Turtle()
 
+button1.penup()
+button1.shape("square")
+button1.color("blue")
+button1.goto(-200,100)
 
-
-
-
-
+button1.penup()
 
 
 
 
 
-for ball in balls:
-  ball.shape("circle")
-  ball.color("green")
-  ball.penup()
-  ball.speed(0)
-  x = random.randint(-290, 290)
-  ball.goto(x, 200)
-  ball.dy = -1
-  grav = 0.1
-  clicks  = 0
-  ball.dx = 4
+
+
+cookie = turtle.Turtle()
+
+cookie.shape("circle")
+cookie.color("red")
+cookie.size = 30
+cookie.speed(0)
 
 
 
+clicks = float(0)
 
 pen = turtle.Turtle()
 pen.hideturtle()
 pen.color("white")
 pen.penup()
-pen.goto(0,200)
+pen.goto(0, 300)
 pen.write(clicks, font=("Courier New", 32, "normal"))
 
-def point():
-  global clicks 
-  clicks += 1
-  pen.clear()
-  pen.write(clicks, font=("Courier New", 32, "normal"))
+
+def glo():
+  if clicked1 and clicks >= 15:
+    clicks -= 15
 
 
 
-while True:
-  wn.update()
-  for ball in balls:
-    ball.dy -= grav
-    ball.sety(ball.ycor() + ball.dy)
+
+def clicked1(x, y):
+    global clicks
+    clicks += 1
+    pen.clear()
+    pen.write(clicks, font=("Courier New", 32, "normal"))
+
+def clicked2(x, y):
   
-    ball.setx(ball.xcor() + ball.dx)
+  global clicks
+  if clicks >=15:
+    if glo:
+      clicks -= 15
+      while True: 
+        clicks += (.0000001)
+       
 
-    if ball.ycor() < -220:
-      ball.dy *= -1
-      point()
-  
-    if ball.xcor() < -300:
-      ball.dx *= -1
-      point()
-  
-  if ball.xcor() > 300:
-    ball.dx *= -1
-    point()
 
+cookie.onclick(clicked1)
+button1.onclick(clicked2)
 
 
 wn.mainloop()
